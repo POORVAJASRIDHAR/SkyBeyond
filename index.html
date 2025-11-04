@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanderlust✈️ | Explore the World</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=80') 
+                  center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 3.2em;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-weight: 300;
+      font-size: 1.4em;
+      margin-top: 10px;
+    }
+
+    .btn {
+      background-color: #ffcc00;
+      color: #003366;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #003366;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: white;
+    }
+
+    h3 {
+      color: #0073bb;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .places {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .card {
+      background-color: #fff;
+      width: 280px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .card p {
+      padding: 15px;
+      font-size: 1em;
+      font-weight: 500;
+    }
+
+    footer {
+      background-color: #003366;
+      color: #fff;
+      padding: 25px;
+      text-align: center;
+    }
+
+    footer img {
+      width: 100px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.4em; }
+      h2 { font-size: 1.1em; }
+      .card { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌴 Wanderlust Awaits</h1>
+    <h2>Discover breathtaking destinations around the world</h2>
+    <button class="btn" onclick="document.getElementById('destinations').scrollIntoView({behavior:'smooth'})">
+      Start Exploring
+    </button>
+  </header>
+
+  <section id="destinations">
+    <h3>Top Destinations</h3>
+    <div class="places">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Paris">
+        <p>✨ <strong>Paris, France</strong> — The City of Love and Lights</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Bali">
+        <p>🏝️ <strong>Bali, Indonesia</strong> — Paradise of Tranquility</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=800&q=80" alt="Japan">
+        <p>🌸 <strong>Kyoto, Japan</strong> — The Land of the Rising Sun</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=800&q=80" alt="Switzerland">
+        <p>🏔️ <strong>Switzerland</strong> — A Dream in the Alps</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Created by <strong>Poorvaja</strong> 🌍 | Deployed on AWS EC2 using CodePipeline & CodeDeploy</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo">
+  </footer>
+
+  <script>
+    // Scroll animation for cards
+    const cards = document.querySelectorAll('.card');
+    window.addEventListener('scroll', () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < triggerBottom) {
+          card.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
